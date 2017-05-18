@@ -1,0 +1,33 @@
+<!-- <div>
+	<input #myInput type="text" name="">
+	<button (click)="onClick(myInput.value)">Mess Up Some Text!!!</button>	
+	<div>
+		{{mail.message}}
+	</div>
+	<ul>
+		<li *ngFor="let thing of mail.favThings">{{thing}}</li>
+	</ul>
+	<ul (click)="onMouseClick($event)">
+		<li>First</li>
+		<li>Second</li>
+		<li>Third</li>
+	</ul>
+</div> -->
+
+<div>
+	<h1>{{hello.blah}}</h1>
+	<!-- {{thing}} -->
+	<br>
+	<input 
+		#myInput 
+		type="text" 
+		[(ngModel)]="thing"
+		[ngClass]="{mousedown: isMouseDown}"
+		(mousedown) = "isMouseDown = true"
+		(mouseup) = "isMouseDown = false"
+		(mouseleave) = "isMouseDown=false"
+	>
+	<br>
+	<!-- <button (click)="onClick(myInput.value)"> Mess up some Text!!!</button> -->
+	<button (click)="update.emit({text:thing})">Click ME!</button>
+</div>

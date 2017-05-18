@@ -1,0 +1,10 @@
+<h2>We are inside the contacts Component</h2>
+
+<!-- Dollar sign after contacts tells us it's an observable -->
+<!-- Async allows us to subscribe to that observable -->
+
+<div *ngFor="let contact of contacts$ | async">
+	<a [routerLink]="contact.id">
+		{{contact.name}}
+	</a>
+</div>

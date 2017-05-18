@@ -1,0 +1,31 @@
+<nav>
+	<!-- put routerLink in square brackets -->
+	<!-- This tells angular we're passing in an object -->
+	<a *ngFor="let nav of navs" 
+		[routerLink]="nav.url"
+		routerLinkActive="active"
+		[routerLinkActiveOptions]="{exact:true}">
+		{{nav.content}}
+	</a>
+</nav>
+
+<!-- BELOW IS A REPETITIVE NAV BAR -->
+<!-- <nav>
+	<a 
+		routerLink="" 
+		routerLinkActive="active"
+		[routerLinkActiveOptions] = "{exact: true}">
+		Home
+	</a>
+	<a 
+		routerLink="contacts" 
+		routerLinkActive="active"
+		[routerLinkActiveOptions] = "{exact: true}">
+		Contacts
+	</a>
+	<a 
+		routerLink="contacts/1" 
+		routerLinkActive="active">
+		Contact One
+	</a>
+</nav> -->

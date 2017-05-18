@@ -1,0 +1,83 @@
+<!-- required checks if the input has something in it -->
+<!-- But it needs to be given a reference to check -->
+<!-- #usernameRef is assigned to the ngModel directive-->
+<!-- Now we are checking against the username in our component through our ngModel -->
+<!-- .valid will return to us true or false -->
+<!-- ngSubmit vs submit-->
+<!-- submit event will refresh the page and send a post -->
+<!-- ngSubmit hijacks the submit process and we can use this for a single page application -->
+
+<h2>Inputs with the .Pristine and .Touched methods</h2>
+<p>Use the references. Touched / Untouched will return true or false. If the person clicks the input it will be true, the moment they click out of the input the method will return false. Here is the "touched" of the username Reference {{usernameRef.touched}}. Here is the "untouched" of the username Reference {{usernameRef.untouched}}</p>
+
+<p>Similarly for the pristine and dirty methods will tell us if a value has changed. Here is the "pristine" of the username Reference {{usernameRef.pristine}}. Here is the "dirty" of the username Reference {{usernameRef.dirty}} </p>
+
+<hr>
+<hr>
+<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+	<h3> Required | .valid | references	</h3>
+	<input 
+		required
+		#usernameRef="ngModel"
+		type="text" 
+		[(ngModel)]="username" 
+		name="username">
+	<p>You entered {{username}}</p>
+	<p>Is the input valid? {{usernameRef.valid}}</p>
+
+	<input type="password" ngModel name="password">
+
+	<h3> .error | required | minlength | default message</h3>
+	<input 
+		type="text" 
+		name="movie" 
+		[(ngModel)]="movie"
+		#movieRef = "ngModel"
+		required
+		minlength=6
+		class="ng-invalid">
+	<p>{{movieRef.errors | json}}</p>
+	<ul>
+		<li>Will return [object object] if you don't pipe json</li>
+		<li>Will return null if nothing is wrong</li>
+		<li>Will show "required:true" if you put require</li>
+		<li>Will show minlength, required and actual length </li>
+	</ul>
+	<p *ngIf="movieRef.errors?.required">This paragraph will pop up if errors is not null. The "?" in the ngIf tells Angular that if there is a null value there don't throw an error, just don't show this element</p>
+	<p *ngIf="movieRef.errors?.minlength">This paragraph will show if errors is not null and we did not enter the minimum amount of characters. This field must be longer than {{movieRef.errors?.minlength.requiredLength}}. You entered {{movieRef.errors?.minlength.actualLength}} characters</p>
+
+	<h2>Grouping Inputs to fit as one object inside FormRef</h2>
+	<p>Using the fieldset tag to group multiple inputs</p>
+	
+	<fieldset ngModelGroup="cast">
+		<input type="text" name="actor" ngModel>
+		<input type="text" name="actress" ngModel>	
+	</fieldset>
+	
+
+	<input type="submit">
+</form>
+
+
+<h2>Show me the value of Form Ref!</h2>
+<p>The values in this object are avalible to us because we gave our inputs a name attribute. We are using .values</p>
+{{formRef.value | json}}
+<p>Forms also have an overall validity you can chck with .value. Our form is currently {{formRef.valid | json}}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

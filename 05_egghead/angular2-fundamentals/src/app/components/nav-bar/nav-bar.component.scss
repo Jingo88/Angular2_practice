@@ -1,0 +1,29 @@
+nav{
+	div{
+		background-color: #FDFAF0;
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		h1{
+			font-size: 2rem;
+	    display: flex;
+	    justify-content: center;
+	    align-content: center;
+	    align-items: center;
+	    margin: 0;
+		}
+		form{
+			display: flex;
+			input{
+				margin: 0;
+				height: 100%;
+			}
+			input[type="submit"]{
+				display: none;
+			}
+		}
+		.menu{
+			justify-content: space-around;
+		}
+	}
+}

@@ -1,0 +1,19 @@
+<!-- The Async is used because this is an observable -->
+<!-- So treat it like an observable and subscribe to it -->
+
+<!-- <h2>You are looking at contact {{id | async }}</h2> -->
+
+<!-- Below shows [object object] -->
+<!-- <h2>You are looking at contact {{ contact$ | async }}</h2>  -->
+
+<!-- Use the ? to tell angular "Do not show when null". This is known as a null guard-->
+<!-- This might load name a little slower than the rest of the page -->
+<!-- <h2>You are looking at contact {{(contact$ | async)?.name}}</h2> -->
+
+<!-- Since we used the rxjs operator startWith we can remove the ? -->
+<!-- Also added an image to it -->
+<h2>You are looking at contact {{(contact$ | async).name}}</h2>
+
+<!-- {{(contact$ | async).image}} -->
+
+<img [src]="(contact$ | async).image">
